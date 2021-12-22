@@ -1,0 +1,51 @@
+version: '3.4'
+
+services:
+    proxy:
+        build:
+            context: ./Infrastructure/proxy-dev
+        ports:
+            - target: 80
+              published: 41080
+            - target: 443
+              published: 41443
+
+    backend:
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+        volumes:
+            - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+            - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+            - ${APPDATA}/PhishingTraining/dataprotection:/var/dotnet/dataprotection
+            - ${APPDATA}/PhishingTraining/templatedata:/var/templatedata
+            - ${APPDATA}/PhishingTraining/log:/var/log/phishingtraining
+    db:
+        ports:
+            - target: 1433
+              published: 41433
+        environment:
+            - SA_PASSWORD=dockerSqlExpressDevelopment_1040
+        volumes:
+            - ${APPDATA}/PhishingTraining/data:/var/opt/mssql/data
+            - ${APPDATA}/PhishingTraining/log:/var/opt/mssql/log
+            - ${APPDATA}/PhishingTraining/secrets:/var/opt/mssql/secrets
+        
+    db-init:
+        image: ${DOCKER_REGISTRY-}db-init
+        depends_on:
+            - db
+        build:
+            context: Infrastructure/db-init
+        environment:
+            - SA_PASSWORD=dockerSqlExpressDevelopment_1040
+
+    mail:
+        ports: 
+            - target: 25
+              published: 41025
+        environment:
+            - USE_DKIM=no
+            - DKIM_KEYFILE=/etc/opendkim/dkim.key
+            - DKIM_DOMAINS=phishingtraining.sec.univie.ac.at
+        volumes:
+            - ${APPDATA}/PhishingTraining/maillog:/var/log/maillog

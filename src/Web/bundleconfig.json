@@ -1,0 +1,79 @@
+[
+  {
+    "outputFileName": "wwwroot/lib/vendor.min.css",
+    "inputFiles": [
+      "node_modules/bootstrap/dist/css/bootstrap.css",
+      "node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css"
+    ],
+    "minify": {
+      "enabled": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/site.min.css",
+    "inputFiles": [ "wwwroot/css/**/*.css" ],
+    "minify": {
+      "enabled": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/site.min.js",
+    "inputFiles": [ "wwwroot/js/**/*.js" ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": true
+  },
+  {
+    "outputFileName": "wwwroot/lib/vendor.min.js",
+    "inputFiles": [
+      "node_modules/jquery/dist/jquery.js",
+      "node_modules/popper.js/dist/umd/popper.js",
+      "node_modules/bootstrap/dist/js/bootstrap.js",
+      "node_modules/datatables.net/js/jquery.dataTables.js",
+      "node_modules/datatables.net-bs4/js/dataTables.bootstrap4.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": true
+  },
+  {
+    "outputFileName": "wwwroot/lib/fontawesome.min.js",
+    "inputFiles": [
+      "wwwroot/lib/fontawesome-pro-web/all.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": true
+  },
+  {
+    "outputFileName": "wwwroot/lib/qrcode.min.js",
+    "inputFiles": [
+      "node_modules/qrcode/build/qrcode.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": true
+  },
+  {
+    "outputFileName": "wwwroot/lib/validation.min.js",
+    "inputFiles": [
+      "node_modules/jquery-validation/dist/jquery.validate.js",
+      "node_modules/jquery-validation/dist/additional-methods.js",
+      "node_modules/jquery-validation/dist/localization/messages_de.js",
+      "node_modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": true
+  }
+]

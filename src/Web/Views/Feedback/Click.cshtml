@@ -1,0 +1,13 @@
+﻿@model PhishingTraining.Web.Models.PhishingMessage.PhishingMessageModel
+
+<div>
+    <h2>Du wurdest gephisht!</h2>
+
+    @if (Model.Campaign.ShowHintsOnClick)
+    {
+        <p>Hier eine Erinnerung - worauf du achten solltest, damit das nicht mehr passiert:</p>
+        <p><b>HINWEISE</b></p>
+        <p>@Model.PhishingTemplate.EducationalInformation</p>
+        <hr />
+    }
+</div>

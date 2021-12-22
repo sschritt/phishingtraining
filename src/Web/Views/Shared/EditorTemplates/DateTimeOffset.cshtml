@@ -1,0 +1,8 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model DateTimeOffset?
+
+<div class="form-group">
+    @Html.LabelFor(s => s, new { @class = "" })
+    @Html.TextBoxFor(s => s, "{0:yyyy-MM-dd}", new { type = "date", @class = "form-control" })
+    @Html.ValidationMessageFor(s => s, null, new { @class = "text-danger" })
+</div>

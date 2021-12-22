@@ -1,0 +1,88 @@
+﻿@model IEnumerable<PhishingTraining.Web.Models.PhishingTemplate.PhishingTemplateDisplayModel>
+@{
+    ViewData["Title"] = Localizer["Templates"];
+}
+
+<div class="pt-4 pb-4">
+    <a asp-action="Create" class="btn btn-outline-primary"><i class="fas fa-plus"></i>&nbsp;@Localizer["Create"]</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Localizer[Html.DisplayNameFor(model => model.Name)]
+            </th>
+            <th>
+                @Localizer[Html.DisplayNameFor(model => model.From)]
+            </th>
+            <th>
+                @Localizer[Html.DisplayNameFor(model => model.FromTimeOfDay)]
+            </th>
+            <th>
+                @Localizer[Html.DisplayNameFor(model => model.To)]
+            </th>
+            <th>
+                @Localizer[Html.DisplayNameFor(model => model.ToTimeOfDay)]
+            </th>
+            <th>
+                @Localizer[@Html.DisplayNameFor(model => model.Type)]
+            </th>
+            <th>
+                @Localizer[Html.DisplayNameFor(model => model.SenderName)]
+            </th>
+            <th>
+                @Localizer[Html.DisplayNameFor(model => model.SenderAddress)]
+            </th>
+            <th>
+                @Localizer[Html.DisplayNameFor(model => model.HasTemplateFile)]
+            </th>
+            <th>
+                @Localizer[Html.DisplayNameFor(model => model.HasPlainTemplateFile)]
+            </th>
+            <th class="nosort"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id">@item.Name</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.From)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FromTimeOfDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.To)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ToTimeOfDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SenderName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SenderAddress)
+            </td>
+            <td>
+                @(item.HasTemplateFile ? @Localizer["Yes"] : @Localizer["No"])
+            </td>
+            <td>
+                @(item.HasPlainTemplateFile ? @Localizer["Yes"] : @Localizer["No"])
+            </td>
+            <td>
+                <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.Id"><i class="fas fa-pencil"></i>&nbsp;@Localizer["Edit"]</a>
+                <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id"><i class="fas fa-trash"></i>&nbsp;@Localizer["Delete"]</a>
+                @*<a class="btn btn-outline-secondary" asp-action="Copy" asp-route-id="@item.Id"><i class="fas fa-paste"></i>&nbsp;@Localizer["Copy"]</a>*@
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

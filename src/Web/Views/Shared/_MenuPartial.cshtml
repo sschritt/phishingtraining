@@ -1,0 +1,22 @@
+@using PhishingTraining.Web.Helpers.Security
+@using PhishingTraining.Web.Helpers
+<div class="navbar-nav flex-grow-1">
+    @if (User.IsInRole(Roles.Participant))
+    {
+        <a class="nav-link text-dark" sba-active-route asp-controller="Participant" asp-action="Index">@Localizer["My Campaigns"]</a>
+    }
+    @if (User.HasFeatureClaim(FeatureClaims.CampaignManagement))
+    {
+        <a class="nav-link text-dark" sba-active-route asp-controller="Campaign" asp-action="Overview">@Localizer["Manage Campaigns"]</a>
+    }
+    @if (User.HasFeatureClaim(FeatureClaims.TemplateManagement))
+    {
+        <a class="nav-link text-dark" sba-active-route asp-area="" asp-controller="Template" asp-action="Index">@Localizer["Templates"]</a>
+    }
+    @if (User.IsInRole(Roles.Admin))
+    {
+        <a class="nav-link text-dark" sba-active-route asp-area="" asp-controller="Administration" asp-action="ListUsers">@Localizer["Administration"]</a>
+    }
+
+    @*<a class="nav-link text-dark" sba-active-route asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>*@
+</div>

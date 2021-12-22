@@ -1,0 +1,10 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model DateTimeOffset?
+
+
+@if (Model.HasValue)
+{
+    <span>
+        @Model.Value.ToString("d") &nbsp; @Model.Value.ToString("t")
+    </span>
+}

@@ -1,0 +1,90 @@
+﻿@model IEnumerable<PhishingTraining.Web.Models.PhishingTemplate.PhishingTemplateCampaignDisplayModel>
+
+<partial name="_CampaignTabNav" />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Localizer[Html.DisplayNameFor(model => model.IsChecked)]
+            </th>
+            <th>
+                @Localizer[Html.DisplayNameFor(model => model.Name)]
+            </th>
+            <th>
+                @Localizer[Html.DisplayNameFor(model => model.Type)]
+            </th>
+            <th>
+                @Localizer[Html.DisplayNameFor(model => model.Difficulty)]
+            </th>
+            <th>
+                @Localizer[Html.DisplayNameFor(model => model.SendType)]
+            </th>
+            <th>
+                @Localizer[Html.DisplayNameFor(model => model.SenderName)]
+            </th>
+            <th>
+                @Localizer[Html.DisplayNameFor(model => model.SenderAddress)]
+            </th>
+            <th>
+                @Localizer[Html.DisplayNameFor(model => model.HasTemplateFile)]
+            </th>
+            <th>
+                @Localizer[Html.DisplayNameFor(model => model.HasPlainTemplateFile)]
+            </th>
+            <th class="nosort"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @(item.IsChecked ? Localizer["Yes"] : Localizer["No"])
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id" asp-controller="Template">@Html.DisplayFor(modelItem => item.Name)</a>
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Difficulty)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.SendType)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.SenderName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.SenderAddress)
+            </td>
+            <td>
+                @(item.HasTemplateFile ? @Localizer["Yes"] : @Localizer["No"])
+            </td>
+            <td>
+                @(item.HasPlainTemplateFile ? @Localizer["Yes"] : @Localizer["No"])
+            </td>
+            <td>
+                @if (item.IsChecked)
+                {
+                    <form method="post" asp-action="RemoveTemplate">
+                        <input type="hidden" id="id" name="id" value="@item.Id">
+                        @Html.Hidden("campaign", item.CampaignId)
+                        <button type="submit" class="btn btn-outline-danger" value="RemoveTemplate"><i class="fas fa-trash"></i>&nbsp;@Localizer["Remove"]</button>
+                    </form>
+                }
+                else
+                {
+                    <form method="post" asp-action="AddTemplate">
+                        <input type="hidden" id="id" name="id" value="@item.Id">
+                        @Html.Hidden("campaign", item.CampaignId)
+                        <button type="submit" class="btn btn-outline-primary" value="AddTemplate"><i class="fas fa-plus"></i>&nbsp;@Localizer["Add"]</button>
+                    </form>
+                }
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

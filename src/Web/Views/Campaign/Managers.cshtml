@@ -1,0 +1,55 @@
+﻿@model IEnumerable<PhishingTraining.Web.Models.Manager.ManagerDisplayModel>
+@{
+    var campaignId = ViewData["CampaignId"];
+}
+<partial name="_CampaignTabNav" />
+
+<div class="pt-4 pb-4">
+    <form method="post" asp-action="AddManager">
+        @Html.Hidden("campaign", campaignId)
+        @Localizer["Username"]:
+        @Html.TextBox("userName", null, new { placeholder = "" })
+        <button type="submit" class="btn btn-outline-primary" value="AddManager"><i class="fas fa-trash"></i>&nbsp;@Localizer["Add"]</button>
+    </form>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Localizer[Html.DisplayNameFor(model => model.UserName)]
+            </th>
+            <th>
+                @Localizer[Html.DisplayNameFor(model => model.FirstName)]
+            </th>
+            <th>
+                @Localizer[Html.DisplayNameFor(model => model.LastName)]
+            </th>
+            <th class="nosort">
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    <form method="post" asp-action="RemoveManager">
+                        <input type="hidden" id="userName" name="userName" value="@item.UserName">
+                        @Html.Hidden("campaign", item.CampaignId)
+                        <button type="submit" class="btn btn-outline-danger" value="RemoveManager"><i class="fas fa-trash"></i>&nbsp;@Localizer["Remove"]</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

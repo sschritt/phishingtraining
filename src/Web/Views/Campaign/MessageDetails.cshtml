@@ -1,0 +1,91 @@
+﻿@model PhishingTraining.Web.Models.PhishingMessage.PhishingMessageModel
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.User)]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.User.UserName)
+        </dd>
+        <dt class="col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.PhishingTemplate.Type)]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PhishingTemplate.Type)
+        </dd>
+        <dt class="col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.User.Email)]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.User.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.User.PhoneNumber)]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.User.PhoneNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.User.FacebookUser)]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.User.FacebookUser)
+        </dd>
+        <dt class="col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.User.InstagramUser)]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.User.InstagramUser)
+        </dd>
+        <dt class="col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.User.TikTokUser)]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.User.TikTokUser)
+        </dd>
+        <dt class="col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.SenderName)]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SenderName)
+        </dd>
+        <dt class="col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.PhishingTemplate.SenderAddress)]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PhishingTemplate.SenderAddress)
+        </dd>
+        <dt class="col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.Subject)]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Subject)
+        </dd>
+        <dt class="col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.TimeToSend)]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TimeToSend)
+        </dd>
+        <dt class="col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.TimeSent)]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TimeSent)
+        </dd>
+        <dt class="col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.HtmlBody)]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HtmlBody)
+        </dd>
+        <dt class="col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.TextBody)]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TextBody)
+        </dd>
+    </dl>
+</div>
+

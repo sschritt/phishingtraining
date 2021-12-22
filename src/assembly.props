@@ -1,0 +1,13 @@
+﻿<Project >
+  <PropertyGroup>
+    <GitInfoReportImportance Condition="'$(GitInfoReportImportance)' == ''">normal</GitInfoReportImportance>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <NeutralLanguage Condition="'$(NeutralLanguage)' == ''">en</NeutralLanguage>
+    <Authors Condition="'$(Authors)' == ''"></Authors>
+    <Company Condition="'$(Company)' == ''">University of Vienna</Company>
+    <Copyright Condition="'$(Copyright)' == ''">Copyright © 2021</Copyright>
+    <Product Condition="'$(Product)' == ''">Phishing Training</Product>
+  </PropertyGroup>
+</Project>

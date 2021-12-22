@@ -1,0 +1,27 @@
+﻿@using PhishingTraining.Web.Helpers
+
+<div class="pt-4 pb-4">
+    <ul class="nav nav-tabs nav-fill" role="tablist">
+        <li role="presentation" class="nav-item">
+            <a sba-active-route asp-action="Details" asp-route-id="@ViewData["CampaignId"]" class="nav-link" role="tab">@Localizer["Details"]</a>
+        </li>
+        <li role="presentation" class="nav-item">
+            <a sba-active-route asp-action="Managers" asp-route-id="@ViewData["CampaignId"]" class="nav-link" role="tab">@Localizer["Managers"]</a>
+        </li>
+        <li role="presentation" class="nav-item">
+            <a sba-active-route asp-action="Templates" asp-route-id="@ViewData["CampaignId"]" class="nav-link" role="tab">@Localizer["Templates"]</a>
+        </li>
+        <li role="presentation" class="nav-item">
+            <a sba-active-route asp-action="Participants" asp-route-id="@ViewData["CampaignId"]" class="nav-link" role="tab">@Localizer["Participants"]</a>
+        </li>
+        <li role="presentation" class="nav-item">
+            <a sba-active-route asp-action="PlannedMessages" asp-route-id="@ViewData["CampaignId"]" class="nav-link" role="tab">@Localizer["Plan"]</a>
+        </li>
+        <li role="presentation" class="nav-item">
+            <a sba-active-route asp-action="SentMessages" asp-route-id="@ViewData["CampaignId"]" class="nav-link" role="tab">@Localizer["Sent"]</a>
+        </li>
+        <li role="presentation" class="nav-item">
+            <a sba-active-route asp-action="Status" asp-route-id="@ViewData["CampaignId"]" class="nav-link" role="tab">@Localizer["Status"]</a>
+        </li>
+    </ul>
+</div>

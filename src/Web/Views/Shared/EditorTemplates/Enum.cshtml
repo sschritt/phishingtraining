@@ -1,0 +1,9 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using PhishingTraining.Web.Helpers
+@model Enum
+
+<div class="form-group">
+    @Html.LabelFor(s => s, new { @class = "" })
+    @Html.DropDownListFor(s => s, Model.AsSelectListItems(ViewData.ModelMetadata.ModelType), new { @class = "form-control" })
+    @Html.ValidationMessageFor(s => s, null, new { @class = "text-danger" })
+</div>

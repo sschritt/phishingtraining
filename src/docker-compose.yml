@@ -1,0 +1,34 @@
+version: '3.4'
+# use secrets for production https://stackoverflow.com/a/42151570/4759472
+services:
+    proxy:
+        image: ${DOCKER_REGISTRY-}proxy
+        depends_on:
+            - backend
+        build:
+            context: ./Infrastructure/proxy
+
+    backend:
+        image: ${DOCKER_REGISTRY-}backend
+        depends_on:
+            - db
+            - mail
+        build:
+            context: .
+            dockerfile: Web/Dockerfile
+            args:
+                - nugetSetup=skip
+        expose:
+            - "5000"
+        environment:
+            - ASPNETCORE_URLS=http://+:5000
+
+    db:
+        image: ${DOCKER_REGISTRY-}db
+        build:
+            context: ./Infrastructure/db
+   
+    mail:
+        image: ${DOCKER_REGISTRY-}mail
+        build:
+            context: ./Infrastructure/mail

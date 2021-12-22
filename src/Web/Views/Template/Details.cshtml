@@ -1,0 +1,119 @@
+﻿@model PhishingTraining.Web.Models.PhishingTemplate.PhishingTemplateDisplayModel
+@{
+    var hasTemplate = (bool?)ViewData["HasTemplate"] ?? false;
+    var hasPlainTemplate = (bool?)ViewData["HasPlainTemplate"] ?? false;
+}
+<div class="pt-4 pb-4">
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-primary"><i class="fas fa-pencil"></i>&nbsp;@Localizer["Edit"]</a>
+    @*<a asp-action="Index" asp-route-id="@Model.Id" class="btn btn-outline-primary"><i class="fas fa-arrow-left"></i>&nbsp;@Localizer["Back"]</a>*@
+</div>
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.Name)]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.Description)]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.Incentive)]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Incentive)
+        </dd>
+        <dt class="col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.Type)]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+        <dt class="col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.Origin)]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Origin)
+        </dd>
+        <dt class="col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.From)]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.From)
+        </dd>
+        <dt class="col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.To)]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.To)
+        </dd>
+        <dt class="col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.SendType)]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SendType)
+        </dd>
+        <dt class="col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.MinSecondsBetweenMessages)]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MinSecondsBetweenMessages)
+        </dd>
+        <dt class="col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.FromTimeOfDay)]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FromTimeOfDay)
+        </dd>
+        <dt class="col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.ToTimeOfDay)]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ToTimeOfDay)
+        </dd>
+        <dt class="col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.SenderName)]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SenderName)
+        </dd>
+        <dt class="col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.SenderAddress)]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SenderAddress)
+        </dd>
+        <dt class="col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.SenderKnown)]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SenderKnown)
+        </dd>
+        <dt class="col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.SubjectTemplate)]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SubjectTemplate)
+        </dd>
+        <dt class="col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.Difficulty)]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Difficulty)
+        </dd>
+    </dl>
+</div>
+
+@if (hasTemplate)
+{
+    <a asp-action="GetTemplateFile" asp-route-id="@Model.Id" class="btn btn-outline-secondary"><i class="fas fa-file-archive"></i>&nbsp;@Localizer["Download Html Template"]</a>
+}
+
+@if (hasPlainTemplate)
+{
+    <a asp-action="GetPlainTemplateFile" asp-route-id="@Model.Id" class="btn btn-outline-secondary"><i class="fas fa-file-archive"></i>&nbsp;@Localizer["Download Plain Template"]</a>
+}

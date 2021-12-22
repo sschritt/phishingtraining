@@ -1,0 +1,65 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@{
+    var hasTemplate = (bool?)ViewData["HasTemplate"] ?? false;
+    var hasPlainTemplate = (bool?)ViewData["HasPlainTemplate"] ?? false;
+}
+@model PhishingTraining.Web.Models.PhishingTemplate.PhishingTemplateModel
+
+<all-messages asp-validation-summary="All"></all-messages>
+<form method="post" asp-action="CreateAndEdit" itemid=null enctype="multipart/form-data">
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.CopyTemplateFilesFromTemplateId)
+
+    @Html.EditorFor(model => model.Name)
+    @Html.EditorFor(model => model.Type)
+    @Html.EditorFor(model => model.Description)
+    @Html.EditorFor(model => model.Incentive)
+    @Html.EditorFor(model => model.Origin)
+    @Html.EditorFor(model => model.SenderName)
+    @Html.EditorFor(model => model.SenderAddress)
+    @Html.EditorFor(model => model.SenderKnown)
+    @Html.EditorFor(model => model.From)
+    @Html.EditorFor(model => model.To)
+    @Html.EditorFor(model => model.SendType)
+    @Html.EditorFor(model => model.MinSecondsBetweenMessages)
+    @Html.EditorFor(model => model.FromTimeOfDay)
+    @Html.EditorFor(model => model.ToTimeOfDay)
+    @Html.EditorFor(model => model.Difficulty)
+    @Html.EditorFor(model => model.SubjectTemplate)
+    @Html.EditorFor(model => model.EducationalInformation)
+    <div class="form-group">
+        <label asp-for="TemplateFile"></label>
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" asp-for="TemplateFile">
+            <label class="custom-file-label" asp-for="TemplateFile">@Localizer["Choose file"]</label>
+        </div>
+    </div>
+    @if (hasTemplate)
+    {
+        <div class="form-group">
+            <a asp-action="GetTemplateFile" asp-route-id="@Model.Id" class="btn btn-outline-secondary"><i class="fas fa-file-archive"></i>&nbsp;@Localizer["Download Html Template"]</a>
+        </div>
+    }
+    <div class="form-group">
+        <label asp-for="PlainTemplateFile"></label>
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" asp-for="PlainTemplateFile">
+            <label class="custom-file-label" asp-for="PlainTemplateFile">@Localizer["Choose file"]</label>
+        </div>
+    </div>
+    @if (hasPlainTemplate)
+    {
+        <div class="form-group">
+            <a asp-action="GetPlainTemplateFile" asp-route-id="@Model.Id" class="btn btn-outline-secondary"><i class="fas fa-file-archive"></i>&nbsp;@Localizer["Download Plain Template"]</a>
+        </div>
+    }
+    <div class="form-group">
+        <button type="submit" class="btn btn-outline-primary"><i class="fas fa-save"></i>&nbsp;@Localizer["Save"]</button>
+    </div>
+</form>
+
+@section Scripts
+{
+    <script src="~/page/Template/Edit.js" asp-append-version="true"></script>
+}
+

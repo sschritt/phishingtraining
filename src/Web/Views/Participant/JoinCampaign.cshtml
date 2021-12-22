@@ -1,0 +1,8 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model PhishingTraining.Web.Models.Campaign.JoinCampaignModel
+
+<form asp-action="JoinCampaign" method="post">
+    <p>@Localizer["Do you want to join the campaign?"]</p>
+    @Html.HiddenFor(model => model.CampaignId)
+    <button class="btn btn-outline-primary"><i class="fas fa-door-open"></i>&nbsp;@Localizer["Join"]</button>
+</form>

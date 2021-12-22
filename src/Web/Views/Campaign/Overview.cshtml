@@ -1,0 +1,54 @@
+﻿@using PhishingTraining.Web.Controllers
+@using PhishingTraining.Web.Helpers
+@model IList<PhishingTraining.Web.Models.Campaign.CampaignDisplayModel>
+@{
+    ViewData["Title"] = Localizer["My Campaigns"];
+}
+
+<div class="pt-4 pb-4">
+    <a asp-action="Create" class="btn btn-outline-primary"><i class="fas fa-plus"></i>&nbsp;@Localizer["Create"]</a>
+</div>
+@if (Model.Count == 0)
+{
+    <div>@Localizer["You are not managing any campaign"]</div>
+}
+else
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>@Localizer["Name"]</th>
+                <th>@Localizer["Start"]</th>
+                <th>@Localizer["End"]</th>
+                <th>@Localizer["Participants"]</th>
+                <th>@Localizer["Invite Link"]</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var campaign in Model)
+            {
+                var url = Url.Action(nameof(JoinController.Campaign), nameof(JoinController).ToControllerName(), new { id = campaign.Id });
+                <tr id="@campaign.Id">
+                    <td><a asp-action="Details" asp-route-id="@campaign.Id">@campaign.Name</a></td>
+                    <td>@Html.DisplayFor(model => campaign.Start)</td>
+                    <td>@Html.DisplayFor(model => campaign.End)</td>
+                    <td>@campaign.Participants.Count</td>
+                    <td>
+                        <div class="input-group">
+                            <input type="text" class="form-control input-joinlink" readonly="readonly" data-toggle="tooltip" data-placement="bottom" title="@Localizer["Invite Link for Participants"]">
+                            <input type="hidden" class="input-joinlinkraw" value="@url" />
+                            <div class="input-group-append">
+                                <button class="btn btn-secondary button-copy" type="button" data-toggle="tooltip" data-placement="bottom" title="@Localizer["Copy to Clipboard"]"><i class="fas fa-paste"></i></button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@section Scripts
+{
+    <script src="~/page/Campaign/Index.js" asp-append-version="true"></script>
+}

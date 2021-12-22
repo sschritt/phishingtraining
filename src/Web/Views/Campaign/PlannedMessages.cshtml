@@ -1,0 +1,70 @@
+﻿@model PhishingTraining.Web.Models.Campaign.CampaignMessagesModel
+
+<partial name="_CampaignTabNav" />
+
+<div class="pb-4">
+    <form asp-action="Generate">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-outline-primary"><i class="fas fa-mail-bulk"></i>&nbsp;@Localizer["Generate"]</button>
+    </form>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Localizer["User"]</th>
+            <th>@Localizer["TimeToSend"]</th>
+            <th>@Localizer["Type"]</th>
+            <th>@Localizer["SendType"]</th>
+            <th>@Localizer["Template"]</th>
+            <th>@Localizer["Subject"]</th>
+            <th>@Localizer["Difficulty"]</th>
+            <th class="nosort"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Templates)
+        {
+        <tr id="@item.Id">
+            <td>
+                @Html.DisplayFor(modelItem => item.User.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeToSend)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhishingTemplate.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhishingTemplate.SendType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhishingTemplate.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhishingTemplate.Difficulty)
+            </td>
+            <td>
+                @if (!String.IsNullOrEmpty(item.HtmlBody) || !String.IsNullOrEmpty(item.TextBody))
+                {
+                    <a asp-action="MessageDetails" asp-route-id="@item.Id" class="btn btn-outline-secondary"><i class="fas fa-file-archive"></i>&nbsp;@Localizer["Details"]</a>
+                }
+
+                <form method="post" asp-action="SendTest" class="d-inline">
+                    <input type="hidden" id="messageId" name="messageId" value="@item.Id">
+                    @Html.Hidden("campaignId", Model.Id)
+                    <button type="submit" class="btn btn-outline-secondary" value="SendTestMail"><i class="fas fa-envelope"></i>&nbsp;@Localizer["Test"]</button>
+                </form>
+                <form method="post" asp-action="DeletePlannedMessage" class="d-inline">
+                    <input type="hidden" id="messageId" name="messageId" value="@item.Id">
+                    @Html.Hidden("campaignId", Model.Id)
+                    <button type="submit" class="btn btn-outline-danger" value="DeletePlannedMessage"><i class="fas fa-trash"></i>&nbsp;@Localizer["Delete"]</button>
+                </form>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

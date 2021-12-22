@@ -1,0 +1,8 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model String
+
+<div class="form-group">
+    @Html.LabelFor(s => s, new { @class = "" })
+    @Html.TextAreaFor(s => s, new { @class = "form-control", rows = "10" })
+    @Html.ValidationMessageFor(s => s, null, new { @class = "text-danger" })
+</div>

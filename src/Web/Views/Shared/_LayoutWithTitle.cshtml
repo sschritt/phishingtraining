@@ -1,0 +1,11 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+<h2>@ViewData["Title"]</h2>
+@RenderBody()
+
+@section Scripts
+{
+    @await RenderSectionAsync("Scripts", required: false)
+}

@@ -1,0 +1,60 @@
+﻿@model PhishingTraining.Web.Models.Campaign.CampaignMessagesModel
+
+<partial name="_CampaignTabNav" />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Localizer["User"]</th>
+            <th>@Localizer["Sent"]</th>
+            <th>@Localizer["Type"]</th>
+            <th>@Localizer["Template"]</th>
+            <th>@Localizer["Subject"]</th>
+            <th>@Localizer["Difficulty"]</th>
+            @*<th>@Localizer["Id"]</th>*@
+            <th>@Localizer["Open (Mail)"]</th>
+            <th>@Localizer["Clicked"]</th>
+            <th class="nosort"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Templates)
+        {
+        <tr id="@item.Id">
+            <td>
+                @Html.DisplayFor(modelItem => item.User.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeSent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhishingTemplate.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhishingTemplate.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhishingTemplate.Difficulty)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.FetchImageDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClickDate)
+            </td>
+            <td>
+                @if (!String.IsNullOrEmpty(item.HtmlBody) || !String.IsNullOrEmpty(item.TextBody))
+                {
+                    <a asp-action="MessageDetails" asp-route-id="@item.Id" class="btn btn-outline-secondary"><i class="fas fa-file-archive"></i>&nbsp;@Localizer["Details"]</a>
+                }
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

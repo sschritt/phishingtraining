@@ -1,0 +1,62 @@
+﻿@model PhishingTraining.Web.Models.PhishingTemplate.PhishingTemplateDisplayModel
+
+<h3>@Localizer["ConfirmDeletion"]</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.Type)]
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+        <dt class = "col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.Name)]
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.Origin)]
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Origin)
+        </dd>
+        <dt class = "col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.Description)]
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.From)]
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.From)
+        </dd>
+        <dt class = "col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.To)]
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.To)
+        </dd>
+        <dt class = "col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.SenderName)]
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SenderName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Localizer[Html.DisplayNameFor(model => model.SenderAddress)]
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SenderAddress)
+        </dd>
+    </dl>
+    
+    <form asp-action="DeletePost">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="@Localizer["Delete"]" class="btn btn-danger" /> |
+        <a asp-action="Index">@Localizer["Back"]</a>
+</form>
+</div>

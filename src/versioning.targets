@@ -1,0 +1,22 @@
+<Project >
+  <Import Project="assembly.props" />
+
+  <Target Name="Version" AfterTargets="GitVersion">
+    <PropertyGroup>
+      <!--Assembly Version-->
+      <AssemblyVersion>$(GitBaseVersion)</AssemblyVersion>
+      <!--Assembly File Version-->
+      <FileVersion>$(GitSemVerMajor).$(GitSemVerMinor).$(GitSemVerPatch).$(GitIsDirty)</FileVersion>
+      <!--Assembly Informational Version-->
+      <!--<Version>$(GitBaseVersion)</Version>-->
+      <!--Unfortunately ProductVersion is not working as expected-->
+      <InformationalVersion>$(FileVersion)-$(GitCommit)</InformationalVersion>
+    </PropertyGroup>
+  </Target>
+  <Target Name="VersionOutput" AfterTargets="Version">
+    <Message Importance="high" Text="Git hash $(GitCommit)" />
+    <Message Importance="high" Text="Assembly version $(AssemblyVersion)" />
+    <Message Importance="high" Text="File version $(FileVersion)" />
+    <Message Importance="high" Text="Informational version $(InformationalVersion)" />
+  </Target>
+</Project>

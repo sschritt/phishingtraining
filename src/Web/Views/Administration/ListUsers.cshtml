@@ -1,0 +1,38 @@
+﻿@using PhishingTraining.Web.Controllers
+@using PhishingTraining.Web.Helpers
+@model IList<PhishingTraining.Web.Models.Administration.ApplicationUserModel>
+
+@if (Model.Count == 0)
+{
+    <div>@Localizer["No users created yet"]</div>
+}
+else
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>@Localizer["Name"]</th>
+                <th>@Localizer["FirstName"]</th>
+                <th>@Localizer["LastName"]</th>
+                <th>@Localizer["Email"]</th>
+                <th>@Localizer["Manager"]</th>
+                <th>@Localizer["Administrator"]</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+            <tr id="@user.UserName">
+                <td>
+                    <a asp-action="ApplicationUserEdit" asp-route-id="@user.UserName">@Html.DisplayFor(model => user.UserName)</a>
+                </td>
+                <td>@Html.DisplayFor(model => user.FirstName)</td>
+                <td>@Html.DisplayFor(model => user.LastName)</td>
+                <td>@Html.DisplayFor(model => user.Email)</td>
+                <td>@Html.DisplayFor(model => user.IsManager)</td>
+                <td>@Html.DisplayFor(model => user.IsAdministrator)</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}

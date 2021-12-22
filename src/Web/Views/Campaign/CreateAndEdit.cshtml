@@ -1,0 +1,25 @@
+﻿@model PhishingTraining.Web.Models.Campaign.CampaignEditModel
+
+<form method="post" asp-action="CreateOrEdit">
+    @Html.HiddenFor(model => model.Id)
+
+    @Html.EditorFor(model => model.Name)
+    @Html.EditorFor(model => model.Start)
+    @Html.EditorFor(model => model.End)
+    @Html.EditorFor(model => model.School)
+    @Html.EditorFor(model => model.Director)
+    @Html.EditorFor(model => model.Class)
+    @Html.EditorFor(model => model.ClassTeacher)
+    @Html.EditorFor(model => model.InformaticsTeacher)
+    @Html.EditorFor(model => model.NumberOfEMailMessagesPerParticipant)
+    @Html.EditorFor(model => model.NumberOfSMSMessagesPerParticipant)
+    @Html.EditorFor(model => model.NumberOfInstagramMessagesPerParticipant)
+    @Html.EditorFor(model => model.NumberOfFacebookMessagesPerParticipant)
+    @Html.EditorFor(model => model.NumberOfTikTokMessagesPerParticipant)
+    @Html.EditorFor(model => model.NumberOfSnapchatMessagesPerParticipant)
+    @Html.EditorFor(model => model.NumberOfWhatsAppMessagesPerParticipant)
+    @Html.EditorFor(model => model.ShowHintsOnClick)
+    @Html.EditorFor(model => model.Description, "StringTextArea")
+
+    <button type="submit" class="btn btn-outline-primary" value="Save"><i class="fas fa-save"></i>&nbsp;@Localizer["Save"]</button>
+</form>

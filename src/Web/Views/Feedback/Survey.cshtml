@@ -1,0 +1,51 @@
+﻿@using PhishingTraining.Web.Helpers
+@model PhishingTraining.Web.Models.Survey.SurveyModel
+
+<div>
+    <h2>Du wurdest gephisht!</h2>
+
+    @if (Model.PhishingMessage.Campaign.ShowHintsOnClick)
+    {
+        <p>Hier eine Erinnerung - worauf du achten solltest, damit das nicht mehr passiert:</p>
+        <p><b>HINWEISE</b></p>
+        <p>@Model.PhishingMessage.PhishingTemplate.EducationalInformation</p>
+        <hr />
+    }
+
+    <div>
+        <h3>Bitte beantworte noch die folgenden Fragen:</h3>
+
+        <form method="post" asp-action="Survey">
+            @Html.HiddenFor(x => x.PhishingMessage.Id)
+
+            <h4>Wo bist du gerade?</h4>
+            @foreach (var location in SurveyHelper.Locations)
+            {
+                <div class="form-check">
+                    <input name="SelectedLocations" type="radio" value="@location.Key" />
+                    <label class="control-label">@location.Value</label>
+                </div>
+            }
+
+            <h4>Was machst du gerade?</h4>
+            @foreach (var activity in SurveyHelper.Activites)
+            {
+                <div class="form-check">
+                    <input type="checkbox" name="SelectedActivities" value="@activity.Key"/>
+                    <label asp-for="@Model.Activites">@activity.Value</label>
+                </div>
+            }
+
+            <h4>Mit Wem?</h4>
+            @foreach (var company in SurveyHelper.Company)
+            {
+                <div class="form-check">
+                <input type="checkbox" name="SelectedCompanies" value="@company.Key"/>
+                <label asp-for="@Model.Company">@company.Value</label>
+            </div>
+            }
+
+            <button type="submit" value="Survey" class="btn btn-primary"><i class="fas fa-save"></i>&nbsp;@Localizer["Save"]</button>
+        </form>
+    </div>
+</div>
