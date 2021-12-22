@@ -3,7 +3,7 @@
 ## Prerequisites
 
 * Installed docker as this projects relies heavily on docker and docker compose for development and deployment.
-* Configure [user secrets](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets) like:
+* Configure [user secrets](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets):
 
 ```json
 {
@@ -13,7 +13,9 @@
 }
 ```
 
-You can do this by executing the following command inside the Developer PowerShell inside the project \src\Web: dotnet user-secrets set "Secrets:ConnectionStringDefaultConnectionPassword" "dockerPhishingTrainingAdminDevelopment_1010"
+You can do this by executing the following command inside the Developer PowerShell inside the project \src\Web: 
+
+```dotnet user-secrets set "Secrets:ConnectionStringDefaultConnectionPassword" "dockerPhishingTrainingAdminDevelopment_1010"```
 
 ## Development settings
 
@@ -24,16 +26,17 @@ Dockerfiles:
 
 The default user accounts and passwords are created inside the \src\Web\Jobs\DatabaseSeedingJob.cs:
 
-* "admin@example.com", Roles.Admin, "VwE3AdadTta6L1Jodgfj"
-* "manager@example.com", Roles.Manager, "3Rnk0hq5kAqoZ19eQdI6"
-* "participant@example.com", Roles.Participant, "lGAVsNavtmIDOKyME0hP"
+* "admin", Roles.Admin, "VwE3AdadTta6L1Jodgfj"
+* "manager", Roles.Manager, "3Rnk0hq5kAqoZ19eQdI6"
+* "participant", Roles.Participant, "lGAVsNavtmIDOKyME0hP"
 
 For sending SMS we used https://www.cm.com/. If you want to use it, you need provide an API key in appsettings.Development.json
 
+```
 "SmsProvider": {
     "ApiKey": "YOUR_KEY"
   },
-
+  ```
 ## Run the project
 
 Set the docker-compose project as startup project. Then by running everything (db, mailserver, proxy, backend) will be setup automatically.
