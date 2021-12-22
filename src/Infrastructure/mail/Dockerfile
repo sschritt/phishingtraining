@@ -1,6 +1,6 @@
 FROM freinet/postfix-relay
 
-ENV MAILNAME=smtp.phishingtraining.sec.univie.ac.at
+ENV MAILNAME=smtp.phishingtraining.at
 ENV LOGOUTPUT=/var/log/maillog
 ENV USE_TLS=no
 

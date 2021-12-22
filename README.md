@@ -19,7 +19,10 @@ You can do this by executing the following command inside the Developer PowerShe
 
 ## Development settings
 
+**Do not forget to change all passwords in production settings**
+
 The Webapp settings can be found in \src\Web\appsettings.json and \src\Web\appsettings.Development.json.
+
 Dockerfiles:
 *  \src\Web\Dockerfile
 *  \src\Infrastructure\..

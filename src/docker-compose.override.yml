@@ -46,6 +46,6 @@ services:
         environment:
             - USE_DKIM=no
             - DKIM_KEYFILE=/etc/opendkim/dkim.key
-            - DKIM_DOMAINS=phishingtraining.sec.univie.ac.at
+            - DKIM_DOMAINS=phishingtraining.at
         volumes:
             - ${APPDATA}/PhishingTraining/maillog:/var/log/maillog
