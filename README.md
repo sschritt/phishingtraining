@@ -1,4 +1,4 @@
-# Phishing Training
+# Phishingtraining
 
 ## Prerequisites
 
