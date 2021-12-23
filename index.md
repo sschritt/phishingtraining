@@ -1,4 +1,4 @@
-## Was ist das Phishingtraining?
+## Phishingtraining
 
 Unser auf lerntheoretischen Erkenntnissen basierendes Phishingtraining ist ein neuartiges Konzept für Schulen, um die Resilienz von Jugendlichen gegenüber Phishing nachhaltig zu erhöhen. TeilnehmerInnen erhalten über einen Zeitraum von mehreren Monaten täuschend echte Phishingnachrichten auf unterschiedlichen Kummunikationskanälen zugeschickt. Dabei werden Frequenz, Schwierigkeitsgrad und Motivation für das Öffnen einer Nachricht (z.B. Belohnung oder Erzeugen von Druck) variiert. Im Vergleich zu klassischen Awarenesstrainings kann durch den Erhalt von Phishingnachrichten über einen längeren Zeitraum das Wissen besser aufrechterhalten erhalten und in den Alltag der Jugendlichen übertragen werden.
 
